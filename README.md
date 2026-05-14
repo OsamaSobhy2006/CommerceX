@@ -1,4 +1,4 @@
-<img width="1878" height="911" alt="Screenshot 2026-05-14 145023" src="https://github.com/user-attachments/assets/a37e250c-92b3-4171-bbaa-96fdd9b30d3c" /># CommerceX – Full Stack E-Commerce Platform
+# CommerceX – Full Stack E-Commerce Platform
 
 ## Overview
 
