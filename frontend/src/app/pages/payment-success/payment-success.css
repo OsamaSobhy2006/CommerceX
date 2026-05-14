@@ -1,0 +1,25 @@
+.success-page{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-card{
+    width: 500px;
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 5px 25px rgba(0,0,0,.1);
+}
+
+.btn-success-page{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    border-radius: 12px;
+    background: black;
+    color: white;
+    text-decoration: none;
+}

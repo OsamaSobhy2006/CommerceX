@@ -1,0 +1,19 @@
+<div class="container py-5">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                {{ authService.currentUser?.name?.charAt(0) || 'U' }}
+            </div>
+            <div>
+                <h2 class="fw-bold mb-1">{{ authService.currentUser?.name }}</h2>
+                <p class="text-secondary mb-0">{{ authService.currentUser?.email }}</p>
+            </div>
+        </div>
+        <div class="profile-info">
+            <div class="info-item">
+                <span class="info-label">Role</span>
+                <span class="info-value">{{ authService.currentUser?.role }}</span>
+            </div>
+        </div>
+    </div>
+</div>

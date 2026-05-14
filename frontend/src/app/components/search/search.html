@@ -1,0 +1,10 @@
+<div class="filter-sidebar p-4 mb-4">
+    <h4 class="fw-bold mb-4 text-primary">Search</h4>
+    <input
+        type="text"
+        class="form-control"
+        placeholder="Search products..."
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
+    >
+</div>

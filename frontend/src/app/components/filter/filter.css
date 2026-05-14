@@ -1,0 +1,34 @@
+
+.form-check{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.form-check-input{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    border: 2px solid #6b7280;
+}
+
+.form-check-input:checked{
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.form-check-label{
+    cursor: pointer;
+    font-size: 17px;
+    color: #374151;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.form-check:hover .form-check-label{
+    color: #0d6efd;
+}
+
+h5{
+    color: #111827;
+}

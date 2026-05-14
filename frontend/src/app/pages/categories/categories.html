@@ -1,0 +1,24 @@
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold display-4">Shop By Category</h1>
+        <p class="text-secondary fs-5">Explore our collections</p>
+    </div>
+    <div class="row g-4">
+        @for(category of categories; track category.slug){
+            <div class="col-md-6 col-lg-4">
+                <div class="category-card" [routerLink]="['/products']" [queryParams]="{
+                        category: category.slug
+                    }"
+                >
+
+                    <img [src]="category.image" [alt]="category.name" class="category-image">
+                    <div class="category-overlay">
+                        <h2 class="fw-bold">{{ category.name }}</h2>
+                        <p> {{ category.description }} </p>
+                        <span> {{ category.productsCount }} Products</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

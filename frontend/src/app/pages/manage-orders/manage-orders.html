@@ -1,0 +1,53 @@
+<div class="container py-5">
+    <h1 class="fw-bold mb-5">Manage Orders</h1>
+    @if(orders.length > 0){
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>User</th>
+                    <th>Total</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(order of orders; track order._id){
+                <tr>
+                    <td>
+                        {{ order._id.slice(-6) }}
+                    </td>
+                    <td>
+                        {{ order.user?.name }}
+                    </td>
+                    <td>
+                        {{ order.totalPrice | currency }}
+                    </td>
+                    <td>
+                        @if(order.isPaid){
+                            <span class="paid-badge">Paid</span>
+                        } @else {
+                            <span class="unpaid-badge">Unpaid</span>
+                        }
+                    </td>
+                    <td>
+                        <span class="status-badge">{{ order.status }}</span>
+                    </td>
+                    <td>
+                        {{ order.createdAt | date }}
+                    </td>
+                    <td>
+                        <a class="details-btn" [routerLink]="['/orders', order._id]">Details</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    } @else {
+        <h3>No Orders Found</h3>
+    }
+</div>

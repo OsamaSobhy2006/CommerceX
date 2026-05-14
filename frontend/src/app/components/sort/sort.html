@@ -1,0 +1,11 @@
+<div class="filter-sidebar p-4">
+
+    <h4 class="fw-bold mb-4 text-primary">Sort</h4>
+    <select class="form-select" [(ngModel)]="sortValue" (change)="onSortChange()">
+        <option value="">Default Sorting</option>
+        <option value="price">Price Low To High</option>
+        <option value="-price">Price High To Low</option>
+        <option value="name">Name from A to Z</option>
+        <option value="-name">Name from Z to A</option>
+    </select>
+</div>

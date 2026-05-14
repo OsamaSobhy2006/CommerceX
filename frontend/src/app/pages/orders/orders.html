@@ -1,0 +1,117 @@
+<div class="container py-5">
+
+    <h1 class="fw-bold mb-5">My Orders</h1>
+
+    @if(orders.length > 0){
+
+        <div class="row g-4">
+
+            @for(order of orders; track order._id){
+
+                <div class="col-12">
+
+                    <div class="order-card">
+
+                        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+
+                            <div>
+
+                                <h3 class="order-id">
+                                    Order #{{ order._id.slice(-6) }}
+                                </h3>
+
+                                <p class="text-secondary mb-0">
+                                    {{ order.createdAt | date }}
+                                </p>
+
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3">
+
+                                <span class="status-badge">
+                                    {{ order.status }}
+                                </span>
+
+                                <span class="payment-badge"
+                                [class.paid]="order.isPaid">
+
+                                    {{ order.isPaid ? 'Paid' : 'Unpaid' }}
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <div class="products-wrapper">
+
+                            @for(item of order.items; track item._id){
+
+                                <div class="product-item">
+
+                                    <div>
+
+                                        <h5 class="mb-1 fw-bold">
+                                            {{ item.product.name }}
+                                        </h5>
+
+                                        <p class="mb-1">
+                                            Quantity: {{ item.quantity }}
+                                        </p>
+
+                                        <p class="fw-bold mb-0">
+                                            {{ item.price | currency }}
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            }
+
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mt-4">
+
+                            <h3 class="fw-bold mb-0">
+                                Total: {{ order.totalPrice | currency }}
+                            </h3>
+
+                            @if(!order.isPaid){
+
+                                <button class="pay-btn" (click)="payNow(order._id)">
+                                    Pay Now
+                                </button>
+                                <button type="button" class="delete-btn" (click)="deleteOrder(order._id)">
+                                    Delete
+                                </button>
+
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            }
+
+        </div>
+
+    } @else {
+
+        <div class="empty-orders">
+
+            <h2>No Orders Yet</h2>
+
+            <a routerLink="/products" class="shop-btn">
+                Start Shopping
+            </a>
+
+        </div>
+
+    }
+
+</div>

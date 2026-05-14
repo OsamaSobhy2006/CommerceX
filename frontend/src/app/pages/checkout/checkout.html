@@ -1,0 +1,145 @@
+<div class="container py-5">
+    <h1 class="checkout-title mb-5">Checkout</h1>
+    <div class="row g-5">
+        <div class="col-lg-7">
+            <div class="checkout-card">
+                <h3 class="section-title mb-4">Shipping Information</h3>
+                <form [formGroup]="checkoutForm">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control custom-input" placeholder="First Name" formControlName="firstName"
+                            [class.is-invalid]="checkoutForm.get('firstName')?.touched && checkoutForm.get('firstName')?.invalid">
+
+                            @if(checkoutForm.get('firstName')?.touched && checkoutForm.get('firstName')?.invalid){
+                                <small class="text-danger d-block mt-2">
+                                    @if(checkoutForm.get('firstName')?.errors?.['required']){
+                                        First name is required
+                                    }
+                                </small>
+                            }
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control custom-input" placeholder="Last Name" formControlName="lastName"
+                            [class.is-invalid]="checkoutForm.get('lastName')?.touched && checkoutForm.get('lastName')?.invalid">
+
+                            @if(checkoutForm.get('lastName')?.touched && checkoutForm.get('lastName')?.invalid){
+                                <small class="text-danger d-block mt-2">
+                                    @if(checkoutForm.get('lastName')?.errors?.['required']){
+                                        Last name is required
+                                    }
+                                </small>
+                            }
+                        </div>
+                        <div class="col-12">
+                            <input type="email" class="form-control custom-input" placeholder="Email Address" formControlName="email"
+                            [class.is-invalid]="checkoutForm.get('email')?.touched && checkoutForm.get('email')?.invalid">
+
+                            @if(checkoutForm.get('email')?.touched && checkoutForm.get('email')?.invalid){
+                                <small class="text-danger d-block mt-2">
+                                    @if(checkoutForm.get('email')?.errors?.['required']){
+                                        Email is required
+                                    }
+                                    @if(checkoutForm.get('email')?.errors?.['email']){
+                                        Invalid email format
+                                    }
+                                </small>
+                            }
+                        </div>
+
+                        <div class="col-12">
+
+                            <input type="text" class="form-control custom-input" placeholder="Phone Number" formControlName="phone"
+                            [class.is-invalid]="checkoutForm.get('phone')?.touched && checkoutForm.get('phone')?.invalid">
+
+                            @if(checkoutForm.get('phone')?.touched && checkoutForm.get('phone')?.invalid){
+
+                                <small class="text-danger d-block mt-2">
+
+                                    @if(checkoutForm.get('phone')?.errors?.['required']){
+                                        Phone number is required
+                                    }
+
+                                    @if(checkoutForm.get('phone')?.errors?.['pattern']){
+                                        Invalid phone number
+                                    }
+
+                                </small>
+
+                            }
+
+                        </div>
+
+                        <div class="col-12">
+
+                            <input type="text" class="form-control custom-input" placeholder="City" formControlName="city"
+                            [class.is-invalid]="checkoutForm.get('city')?.touched && checkoutForm.get('city')?.invalid">
+
+                            @if(checkoutForm.get('city')?.touched && checkoutForm.get('city')?.invalid){
+
+                                <small class="text-danger d-block mt-2">
+
+                                    @if(checkoutForm.get('city')?.errors?.['required']){
+                                        City is required
+                                    }
+
+                                </small>
+
+                            }
+
+                        </div>
+
+                        <div class="col-12">
+
+                            <input type="text" class="form-control custom-input" placeholder="Address" formControlName="address"
+                            [class.is-invalid]="checkoutForm.get('address')?.touched && checkoutForm.get('address')?.invalid">
+
+                            @if(checkoutForm.get('address')?.touched && checkoutForm.get('address')?.invalid){
+
+                                <small class="text-danger d-block mt-2">
+
+                                    @if(checkoutForm.get('address')?.errors?.['required']){
+                                        Address is required
+                                    }
+
+                                </small>
+
+                            }
+
+                        </div>
+
+
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="summary-card">
+
+                <h2 class="summary-title mb-4">Order Summary</h2>
+
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Total</span>
+                    <span class="fw-bold">{{ totalPrice | currency }}</span>
+                </div>
+
+                <button class="payment-btn w-100"
+                [disabled]="checkoutForm.invalid"
+                (click)="placeOrder()">
+
+                    Continue To Payment
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

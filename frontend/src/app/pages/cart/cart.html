@@ -1,0 +1,92 @@
+<div class="container py-5">
+
+    <h1 class="fw-bold mb-5">Shopping Cart</h1>
+
+    @if(cart.items.length > 0){
+
+    <div class="row g-5">
+
+        <div class="col-lg-8">
+
+            @for(item of cart.items; track item.product._id){
+
+            <div class="cart-item d-flex align-items-center justify-content-between flex-wrap">
+
+                <div class="d-flex align-items-center gap-4">
+
+                    <img [src]="item.product.image" class="cart-image" alt="product">
+
+                    <div>
+
+                        <h4 class="fw-bold mb-2">{{ item.product.name }}</h4>
+
+                        <p class="text-secondary mb-2">{{ item.price | currency }}</p>
+
+                        <div class="quantity-box">
+
+                            <button class="qty-btn" (click)="decreaseQuantity(item.product._id, item.quantity)">-</button>
+
+                            <span>{{ item.quantity }}</span>
+
+                            <button class="qty-btn" (click)="increaseQuantity(item.product._id, item.quantity)">+</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="d-flex flex-column align-items-end gap-3">
+
+                    <h5 class="fw-bold">{{ item.price * item.quantity | currency }}</h5>
+
+                    <button class="btn btn-danger" (click)="removeItem(item.product._id)">
+                        Remove
+                    </button>
+
+                </div>
+
+            </div>
+
+            }
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="summary-card">
+
+                <h2 class="fw-bold mb-4">Order Summary</h2>
+
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Total</span>
+                    <span class="fw-bold">{{ cart.totalPrice | currency }}</span>
+                </div>
+
+                <button class="checkout-btn w-100" routerLink="/checkout">
+                    Proceed To Checkout
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    } @else {
+
+    <div class="empty-cart text-center">
+
+        <i class="bi bi-cart-x empty-icon"></i>
+
+        <h3 class="fw-bold mt-4">Your cart is empty</h3>
+
+        <a routerLink="/products" class="btn btn-primary mt-3">
+            Continue Shopping
+        </a>
+
+    </div>
+
+    }
+
+</div>

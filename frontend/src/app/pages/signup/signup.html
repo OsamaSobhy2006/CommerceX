@@ -1,0 +1,62 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="signup-card p-5">
+                <h1 class="text-center fw-bold mb-5 text-primary">Create Account</h1>
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-4">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" formControlName="name" [class.is-invalid]="signupForm.get('name')?.errors && (signupForm.get('name')?.touched || signupForm.get('name')?.dirty)">
+                        @if(signupForm.get('name')?.errors && (signupForm.get('name')?.touched ||signupForm.get('name')?.dirty)){      
+                            @if(signupForm.get('name')?.errors?.['required']){
+                                <small class="text-danger">Name is required</small>
+                            }
+                            @if(signupForm.get('name')?.errors?.['minlength']){
+                                <small class="text-danger">Name should be 3 chars or above</small>
+                            }
+
+                        }
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" formControlName="email" [class.is-invalid]="signupForm.get('email')?.errors && (signupForm.get('email')?.touched || signupForm.get('email')?.dirty)" >
+                        @if(signupForm.get('email')?.errors && (signupForm.get('email')?.touched ||signupForm.get('email')?.dirty)){      
+                            @if(signupForm.get('email')?.errors?.['required']){
+                                <small class="text-danger">Email is required</small>
+                            }
+                        }
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" formControlName="password" [class.is-invalid]="signupForm.get('password')?.errors && (signupForm.get('password')?.touched || signupForm.get('password')?.dirty)">
+                        @if(signupForm.get('password')?.errors && (signupForm.get('password')?.touched ||signupForm.get('password')?.dirty)){      
+                            @if(signupForm.get('password')?.errors?.['required']){
+                                <small class="text-danger">Password is required</small>
+                            }
+                            @if(signupForm.get('password')?.errors?.['minlength']){
+                                <small class="text-danger">Password should be 6 chars or above</small>
+                            }
+                        }
+                    </div>
+                    <div class="mb-4">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" formControlName="confirmPassword" [class.is-invalid]=" signupForm.get('confirmPassword')?.errors &&(signupForm.get('confirmPassword')?.touched || signupForm.get('confirmPassword')?.dirty)">
+                    @if(signupForm.get('confirmPassword')?.errors && ( signupForm.get('confirmPassword')?.touched ||signupForm.get('confirmPassword')?.dirty)){
+                        @if(signupForm.get('confirmPassword')?.errors?.['required']){
+                            <small class="text-danger">Confirm password is required</small>
+                        }
+                    }
+                    @if(signupForm.errors?.['passwordMismatch'] && signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.value &&   signupForm.get('password')?.value){
+                        <small class="text-danger">Passwords do not match</small>
+                    }
+                </div>
+                    <button class="btn btn-primary w-100 py-3" [disabled]="signupForm.invalid">Sign Up</button>
+                    <div class="text-center mt-4">
+                        <span class="text-muted">Already have an account?</span>
+                        <a routerLink="/login" class="text-primary fw-bold text-decoration-none ms-2">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

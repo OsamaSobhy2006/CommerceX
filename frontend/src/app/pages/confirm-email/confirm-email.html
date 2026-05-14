@@ -1,0 +1,23 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="verify-card p-5">
+                <h1 class="text-center text-primary fw-bold mb-4">Verify OTP</h1>
+                <p class="text-center text-muted mb-5">Enter the OTP code sent to your email</p>
+                <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-4">
+                        <label class="form-label">OTP Code</label>
+                        <input type="text" class="form-control" formControlName="otp" placeholder="Enter OTP"
+                          [class.is-invalid]="otpForm.get('otp')?.errors &&(otpForm.get('otp')?.touched || otpForm.get('otp')?.dirty)">
+                        @if( otpForm.get('otp')?.errors &&(otpForm.get('otp')?.touched ||otpForm.get('otp')?.dirty)){
+                            @if(otpForm.get('otp')?.errors?.['required']){
+                                <small class="text-danger">OTP is required</small>
+                            }
+                        }
+                    </div>
+                    <button class="btn btn-primary w-100 py-3" [disabled]="otpForm.invalid">Verify OTP</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<h1 class="text-center text-primary my-4">Update Product Form</h1>
+<div class="container">
+    <form [formGroup]="UpdateProduct" (submit)="onSubmit()">
+        <div class="mb-3">
+            <label for="name" class="form-label">Product Name: </label>
+            <input type="text" [class.is-invalid]="checkInput('name')" class="form-control" formControlName="name" id="name">
+            @if(checkInput("name")){
+                @if(this.UpdateProduct.get("name")?.errors?.['required']){
+                    <small class="text-danger">Name is required</small>
+                }
+                @if(this.UpdateProduct.get("name")?.errors?.['minlength']){
+                    <small class="text-danger">Name should be 3 char or above</small>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Product Price: </label>
+            <input type="number" [class.is-invalid]="checkInput('price')" class="form-control" formControlName="price" id="price">
+            @if(checkInput("price")){
+                @if(this.UpdateProduct.get("price")?.errors?.['required']){
+                    <small class="text-danger">Price is required</small>
+                }
+                @if(this.UpdateProduct.get("price")?.errors?.['min']){
+                    <small class="text-danger">Price should be positive</small>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Product Image: </label>
+            <input type="text" [class.is-invalid]="checkInput('image')" class="form-control" formControlName="image" id="image">
+            @if(checkInput("image")){
+                @if(this.UpdateProduct.get("image")?.errors?.['required']){
+                    <small class="text-danger">image is required</small>
+                }
+                @if(this.UpdateProduct.get("image")?.errors?.['minlength']){
+                    <small class="text-danger">image should be 3 char or above</small>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Product Category: </label>
+            <select class="form-select" [class.is-invalid]="checkInput('category')" id="category" formControlName="category">
+                <option value="electronics">electronics</option>
+                <option value="sports">sports</option>
+                <option value="clothes">clothes</option>
+            </select>
+            @if(checkInput("category")){
+                @if(this.UpdateProduct.get("category")?.errors?.['required']){
+                    <small class="text-danger">category is required</small>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Product description: </label>
+            <textarea type="text" [class.is-invalid]="checkInput('description')" class="form-control" id="description" formControlName="description"></textarea>
+            @if(checkInput("image")){
+                @if(this.UpdateProduct.get("description")?.errors?.['required']){
+                    <small class="text-danger">description is required</small>
+                }
+                @if(this.UpdateProduct.get("description")?.errors?.['minlength']){
+                    <small class="text-danger">description should be 3 char or above</small>
+                }
+            }
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="UpdateProduct.invalid">Update Product</button>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+.dashboard-card{
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.dashboard-card:hover{
+    transform: translateY(-5px);
+}
+
+.dashboard-card h5{
+    color: gray;
+    margin-bottom: 15px;
+}
+
+.dashboard-card h2{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.action-btn{
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: linear-gradient(to right, #7b2ff7, #f107a3);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}

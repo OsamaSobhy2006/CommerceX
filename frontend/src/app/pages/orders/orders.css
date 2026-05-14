@@ -1,0 +1,84 @@
+.order-card{
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.order-id{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.products-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-item{
+    padding: 20px;
+    border-radius: 14px;
+    background: #f8f9fa;
+}
+
+.status-badge{
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: #fff3cd;
+    color: #856404;
+    font-weight: 600;
+}
+
+.payment-badge{
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: #f8d7da;
+    color: #842029;
+    font-weight: 600;
+}
+
+.payment-badge.paid{
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.pay-btn{
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    background: linear-gradient(90deg,#7b2ff7,#f107a3);
+}
+
+.empty-orders{
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.shop-btn{
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: black;
+    color: white;
+    text-decoration: none;
+}
+
+.delete-btn{
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: #dc3545;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.delete-btn:hover{
+    opacity: 0.9;
+}

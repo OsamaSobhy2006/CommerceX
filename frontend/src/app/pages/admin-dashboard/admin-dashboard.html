@@ -1,0 +1,42 @@
+<div class="container py-5">
+    <h1 class="fw-bold mb-5">Admin Dashboard</h1>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="dashboard-card">
+                <h5>Total Products</h5>
+                <h2>{{stats?.totalProducts}}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="dashboard-card">
+                <h5>Total Orders</h5>
+                <h2>{{stats?.totalOrders}}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="dashboard-card">
+                <h5>Total Users</h5>
+                <h2>{{stats?.totalUsers}}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="dashboard-card">
+                <h5>Total Revenue</h5>
+                <h2>{{stats?.totalRevenue | currency}}</h2>
+            </div>
+        </div>
+
+    </div>
+    <div class="quick-actions mt-5">
+        <h3 class="mb-4">Quick Actions</h3>
+        <div class="d-flex flex-wrap gap-3">
+            <a routerLink="/products/new" class="action-btn">Add Product</a>
+            <a routerLink="/admin/orders" class="action-btn">Manage Orders</a>
+            <a routerLink="/categories" class="action-btn">Categories</a>
+        </div>
+    </div>
+
+</div>

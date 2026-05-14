@@ -1,0 +1,65 @@
+.category-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    cursor: pointer;
+
+    height: 420px;
+
+    transition: 0.4s;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+}
+
+.category-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.category-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+      linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.2)
+      );
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    padding: 30px;
+}
+
+.category-overlay p {
+
+    color: #d1d5db;
+
+    margin-block: 10px;
+}
+
+.category-overlay span {
+
+    font-weight: 600;
+
+    color: #f9fafb;
+}

@@ -1,0 +1,46 @@
+table{
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+th{
+    background: #f8f9fa;
+    padding: 20px !important;
+}
+
+td{
+    padding: 20px !important;
+}
+
+.paid-badge{
+    background: #d1e7dd;
+    color: #0f5132;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.unpaid-badge{
+    background: #f8d7da;
+    color: #842029;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.status-badge{
+    background: #fff3cd;
+    color: #856404;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+.details-btn{
+    padding: 8px 18px;
+    border-radius: 10px;
+    background: linear-gradient(to right,#7b2ff7,#f107a3);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}

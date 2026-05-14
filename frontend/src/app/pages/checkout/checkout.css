@@ -1,0 +1,39 @@
+.checkout-title{
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.checkout-card,
+.summary-card{
+    background: #fff;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.section-title,
+.summary-title{
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.custom-input{
+    height: 60px;
+    border-radius: 14px;
+    border: 1px solid #e5e5e5;
+    padding-inline: 20px;
+}
+
+.custom-input:focus{
+    box-shadow: none;
+    border-color: #c026d3;
+}
+
+.payment-btn{
+    border: none;
+    height: 60px;
+    border-radius: 14px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(to right,#7c3aed,#ec008c);
+}

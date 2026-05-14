@@ -1,0 +1,49 @@
+.success-page{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.success-card{
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.success-card h1{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #dc3545;
+}
+
+.success-card p{
+    font-size: 18px;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.btn-success-page{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border-radius: 14px;
+    background: linear-gradient(90deg,#ff416c,#ff4b2b);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.btn-success-page:hover{
+    transform: translateY(-3px);
+    opacity: .9;
+}

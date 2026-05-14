@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="/navbarimage.png" height="70"  alt=""></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+
+      <ul class="navbar-nav gap-lg-5 align-items-start">
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLinkActive="fw-bold" routerLink="/home">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="fw-bold" routerLink="/products">Products</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="fw-bold" routerLink="/categories">Category</a>
+        </li>
+
+        @if(authService.isAdmin){
+
+          <li class="nav-item">
+            <a routerLink="/admin/dashboard" routerLinkActive="fw-bold" class="nav-link">Dashboard</a>
+          </li>
+
+        }
+
+        @if(authService.currentUser){
+
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="fw-bold" routerLink="/orders">Orders</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="fw-bold" routerLink="/profile">Profile</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link logout" (click)="logout()">Logout</a>
+          </li>
+
+        }@else {
+
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="fw-bold" routerLink="/login">Login</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="fw-bold" routerLink="/signup">Signup</a>
+          </li>
+
+        }
+        <li class="nav-item">
+        <a class="nav-link position-relative" routerLink="/cart">
+
+        <i class="bi bi-cart3 fs-5"></i>
+
+        <span class="cart-badge">
+            {{ cartCount$ | async}}
+        </span>
+
+    </a>
+</li>
+
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
