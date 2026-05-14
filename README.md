@@ -142,7 +142,8 @@ Create a `.env` file inside the `backend` folder and add:
 
 ```env
 PORT=8000
-MONGO_URI=your_mongodb_uri
+MONGO_URL=your_mongodb_url // if you want to work with local database with mongoDB campass
+PRODUCION_URL = your_mongodbAtlas_url // if you want to work with a global database with atlas
 JWT_SECRET=your_jwt_secret
 STRIPE_SECRET=your_stripe_secret
 STRIPE_WEBHOOK_SECRET=your_webhook_secret
