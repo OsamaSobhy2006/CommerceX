@@ -1,30 +1,54 @@
-import { Component, OnInit } from '@angular/core';
-import { Order } from '../../services/order';
+import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, CommonModule } from '@angular/common';
+
+import { Order } from '../../services/order';
 
 @Component({
   selector: 'app-order-details',
-  imports: [CurrencyPipe],
+  standalone: true,
+  imports: [
+    CommonModule,
+    CurrencyPipe
+  ],
   templateUrl: './order-details.html',
   styleUrl: './order-details.css',
 })
+
 export class OrderDetails implements OnInit{
-  order: any
-  constructor(private route: ActivatedRoute, private orderService: Order){}
+
+  order = signal<any>(null);
+
+  constructor(
+    private route: ActivatedRoute,
+    private orderService: Order
+  ){}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
+
+    const id = this.route.snapshot.paramMap.get('id');
 
     if(id){
-      this.orderService.getOrderById(id).subscribe({
+
+      this.orderService.getOrderById(id)
+      .subscribe({
+
         next: (res: any) => {
-          this.order = res.data.order
+
+          console.log(res);
+
+          this.order.set(res.data.order);
+
         },
+
         error: (err: any) => {
-          console.log(err)
+          console.log(err);
         }
-      })
+
+      });
+
     }
+
   }
+
 }

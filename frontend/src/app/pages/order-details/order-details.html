@@ -1,74 +1,158 @@
 <div class="container py-5">
-    @if(order){
+
+    @if(order()){
+
     <div class="details-card">
+
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
             <div>
-                <h1 class="fw-bold">Order Details</h1>
-                <p class="text-secondary">#{{ order._id }}</p>
+
+                <h1 class="fw-bold">
+                    Order Details
+                </h1>
+
+                <p class="text-secondary">
+                    #{{ order()?._id }}
+                </p>
+
             </div>
 
             <div class="d-flex gap-2">
-                <span class="status-badge">{{ order.status }}</span>
-                <span class="payment-badge" [class.paid]="order.isPaid">
-                    {{ order.isPaid ? 'Paid' : 'Unpaid' }}
+
+                <span class="status-badge">
+                    {{ order()?.status }}
                 </span>
+
+                <span
+                    class="payment-badge"
+                    [class.paid]="order()?.isPaid"
+                >
+                    {{ order()?.isPaid ? 'Paid' : 'Unpaid' }}
+                </span>
+
             </div>
 
         </div>
+
         <hr>
+
         <div class="mb-4">
-            <h4 class="fw-bold mb-3">Customer Info</h4>
-            <p> <strong>Name:</strong>
-                {{ order.user?.name }}
-            </p>
+
+            <h4 class="fw-bold mb-3">
+                Customer Info
+            </h4>
+
             <p>
-                <strong>Email:</strong>
-                {{ order.user?.email }}
+
+                <strong>Name:</strong>
+
+                {{ order()?.user?.name }}
+
             </p>
+
+            <p>
+
+                <strong>Email:</strong>
+
+                {{ order()?.user?.email }}
+
+            </p>
+
         </div>
 
         <div class="mb-4">
-            <h4 class="fw-bold mb-3">Products</h4>
+
+            <h4 class="fw-bold mb-3">
+                Products
+            </h4>
+
             <div class="products-wrapper">
-                @for(item of order.items; track item._id){
+
+                @for(item of order()?.items; track item._id){
+
                 <div class="product-item">
+
                     <div>
-                        <h5 class="fw-bold">{{ item.product?.name }}</h5>
-                        <p>Quantity: {{ item.quantity }}</p>
+
+                        <h5 class="fw-bold">
+                            {{ item.product?.name }}
+                        </h5>
+
+                        <p>
+                            Quantity: {{ item.quantity }}
+                        </p>
+
                     </div>
-                    <h5 class="fw-bold">{{ item.price | currency }}</h5>
+
+                    <h5 class="fw-bold">
+                        {{ item.price | currency }}
+                    </h5>
+
                 </div>
+
                 }
 
             </div>
-        </div>
-        <div class="shipping-box">
-            <h4 class="fw-bold mb-3">Shipping Address</h4>
-        <div class="shipping-box">
-            <p> <strong>Name:</strong>
-                {{ order.shippingAddress.firstName }}
-                {{ order.shippingAddress.lastName }}
-            </p>
-            <p>
-                <strong>Email:</strong>
-                {{ order.shippingAddress.email }}
-            </p>
-            <p>
-                <strong>Phone:</strong>
-                {{ order.shippingAddress.phone }}
-            </p>
-            <p>
-                <strong>City:</strong>
-                {{ order.shippingAddress.city }}
-            </p>
 
         </div>
+
+        <div class="shipping-box">
+
+            <h4 class="fw-bold mb-3">
+                Shipping Address
+            </h4>
+
+            <div class="shipping-box">
+
+                <p>
+
+                    <strong>Name:</strong>
+
+                    {{ order()?.shippingAddress?.firstName }}
+
+                    {{ order()?.shippingAddress?.lastName }}
+
+                </p>
+
+                <p>
+
+                    <strong>Email:</strong>
+
+                    {{ order()?.shippingAddress?.email }}
+
+                </p>
+
+                <p>
+
+                    <strong>Phone:</strong>
+
+                    {{ order()?.shippingAddress?.phone }}
+
+                </p>
+
+                <p>
+
+                    <strong>City:</strong>
+
+                    {{ order()?.shippingAddress?.city }}
+
+                </p>
+
+            </div>
+
         </div>
 
         <div class="total-box">
+
             Total:
-            {{ order.totalPrice | currency }}
+
+            {{ order()?.totalPrice | currency }}
+
         </div>
+
     </div>
+
     }
+
 </div>

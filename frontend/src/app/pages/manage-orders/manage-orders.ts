@@ -1,29 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { Order } from '../../services/order';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { Component, OnInit, signal } from '@angular/core';
+import { CurrencyPipe, DatePipe, CommonModule } from '@angular/common';
 import { RouterLink } from "@angular/router";
+
+import { Order } from '../../services/order';
 
 @Component({
   selector: 'app-manage-orders',
-  imports: [DatePipe, CurrencyPipe, RouterLink],
+  standalone: true,
+  imports: [
+    CommonModule,
+    DatePipe,
+    CurrencyPipe,
+    RouterLink
+  ],
   templateUrl: './manage-orders.html',
   styleUrl: './manage-orders.css',
 })
+
 export class ManageOrders implements OnInit{
-  orders: any[] = []
+
+  orders = signal<any[]>([]);
+
   constructor(private orderService: Order){}
+
   ngOnInit(): void {
-    this.getOrders()
+    this.getOrders();
   }
 
   getOrders(){
-    this.orderService.getAllOrders().subscribe({
+
+    this.orderService.getAllOrders()
+    .subscribe({
+
       next: (res: any) => {
-        this.orders = res.data.orders
+
+        console.log(res);
+
+        this.orders.set(res.data.orders);
+
       },
+
       error: (err: any) => {
-        console.log(err)
+        console.log(err);
       }
-    })
+
+    });
+
   }
+
 }

@@ -9,7 +9,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withInMemoryScrolling({scrollPositionRestoration: 'top'})),
-    provideHttpClient(withFetch()),
+    provideHttpClient(),
     provideToastr(),
   ]
 };

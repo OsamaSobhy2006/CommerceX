@@ -1,32 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink } from "@angular/router";
-import { Admin } from '../../services/admin';
 import { CurrencyPipe } from '@angular/common';
+
+import { Admin } from '../../services/admin';
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [RouterLink, CurrencyPipe],
   standalone: true,
+  imports: [
+    RouterLink,
+    CurrencyPipe
+  ],
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.css',
 })
+
 export class AdminDashboard implements OnInit{
-  stats: any;
+
+  stats = signal<any>(null);
 
   constructor(private adminService: Admin){}
 
   ngOnInit(): void {
-    this.getStats()
+    this.getStats();
   }
 
   getStats(){
-    this.adminService.getDashboardStats().subscribe({
+
+    this.adminService.getDashboardStats()
+    .subscribe({
+
       next: (res: any) => {
-        this.stats = res.data
+
+        console.log(res);
+
+        this.stats.set(res.data);
+
       },
+
       error: (err) => {
-        console.log(err)
+        console.log(err.error.message);
       }
-    })
+
+    });
+
   }
+
 }
