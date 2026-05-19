@@ -102,23 +102,7 @@ cd CommerceX
 
 ---
 
-## 3. Setup Frontend
-
-```bash
-cd frontend
-npm install
-ng serve
-```
-
-Frontend will run on:
-
-```bash
-http://localhost:4200
-```
-
----
-
-## 4. Setup Backend
+## 3. Setup Backend
 
 Open another terminal:
 
@@ -132,6 +116,20 @@ Backend will run on:
 
 ```bash
 http://localhost:8000
+```
+
+## 4. Setup Frontend
+
+```bash
+cd frontend
+npm install
+ng serve
+```
+
+Frontend will run on:
+
+```bash
+http://localhost:4200
 ```
 
 ---
