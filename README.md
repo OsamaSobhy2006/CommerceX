@@ -104,8 +104,6 @@ cd CommerceX
 
 ## 3. Setup Backend
 
-Open another terminal:
-
 ```bash
 cd backend
 npm install
@@ -119,6 +117,8 @@ http://localhost:8000
 ```
 
 ## 4. Setup Frontend
+
+Open another terminal:
 
 ```bash
 cd frontend
