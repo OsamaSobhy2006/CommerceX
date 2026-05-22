@@ -20,17 +20,13 @@ app.use('/uploads', express.static('uploads'))
 
 app.set('query parser', 'extended');
 
+app.set('trust proxy', 1)
+
 app.use('/payment/webhook', express.raw({ type: 'application/json' }))
 
 app.use(express.json())
 app.use(helmet())
-app.use(cors({
-    origin: [
-        'http://localhost:4200',
-        'https://commerce-x-livid.vercel.app'
-    ],
-    credentials: true
-}))
+app.use(cors())
 const limiter = expressLimit.rateLimit({
     windowMs: 10 * 60 * 1000,
     limit: 1000
