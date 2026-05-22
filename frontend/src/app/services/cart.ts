@@ -7,7 +7,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 })
 
 export class Cart {
-  apiUrl = 'http://localhost:8000/cart'
+  apiUrl = 'https://commercex-production.up.railway.app/cart'
   cartCount = new BehaviorSubject<number>(0)
 
   constructor(private http: HttpClient){}
