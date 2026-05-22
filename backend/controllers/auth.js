@@ -149,7 +149,7 @@ exports.forgetPassword = catchAsync(async(req, res, next) => {
     findUser.resetDate = Date.now() + 10 * 60 * 1000
     await findUser.save()
 
-    const link = `http://localhost:4200/reset-password/${resetToken}`
+    const link = `https://commerce-x-livid.vercel.app/reset-password/${resetToken}`
 
 await sendEmail(
   email,
