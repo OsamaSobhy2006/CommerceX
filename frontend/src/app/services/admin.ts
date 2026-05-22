@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class Admin {
-  apiLink = 'http://localhost:8000/admin'
+  apiLink = 'https://commercex-production.up.railway.app/admin'
 
   constructor(private http: HttpClient){}
 
