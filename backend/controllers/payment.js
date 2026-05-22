@@ -27,8 +27,8 @@ exports.checkOut = catchAsync(async(req, res, next)=>{
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
-        success_url: "https://commerce-x-livid.vercel.app/success",
-        cancel_url: "https://commerce-x-livid.vercel.app/cancel",
+        success_url: "http://localhost:4200/success",
+        cancel_url: "http://localhost:4200/cancel",
         metadata: {
             orderId: order._id.toString()
         },

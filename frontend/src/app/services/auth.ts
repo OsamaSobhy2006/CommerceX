@@ -6,7 +6,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class Auth {
-  apiLink = 'https://commercex-production.up.railway.app/auth'
+  apiLink = 'http://localhost:8000/auth'
   currentUser: any = null;
 
   constructor(private _http: HttpClient) {}

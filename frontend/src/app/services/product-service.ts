@@ -7,7 +7,7 @@ import { IProduct } from '../models/iproduct';
 })
 export class ProductService {
   constructor(private _http: HttpClient) {}
-  apiLink = `https://commercex-production.up.railway.app/products`
+  apiLink = `http://localhost:8000/products`
 
 
   getProducts(query: string = ''){

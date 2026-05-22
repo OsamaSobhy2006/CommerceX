@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 export class Order {
 
-  apiUrl = 'https://commercex-production.up.railway.app/orders';
+  apiUrl = 'http://localhost:8000/orders';
 
   constructor(private http: HttpClient) {}
 
