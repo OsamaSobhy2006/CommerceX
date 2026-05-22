@@ -25,7 +25,7 @@ app.use('/payment/webhook', express.raw({ type: 'application/json' }))
 app.use(express.json())
 app.use(helmet())
 app.use(cors({
-    origin: "http://localhost:4200",
+    origin: "https://commerce-x-livid.vercel.app",
     credentials: true
 }))
 const limiter = expressLimit.rateLimit({
