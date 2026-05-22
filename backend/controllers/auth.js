@@ -29,7 +29,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
     const user = await User.create({...req.body, password:hashPassword, confirmOTP, otpDate })
 
-    await sendEmail(
+    sendEmail(
   email,
   "Confirm Your Email",
   "",
@@ -86,7 +86,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
     return res.status(200).json({
         success: true,
-        data: user
+        message: "OTP sent successfully"
     })
 })
 
@@ -149,9 +149,9 @@ exports.forgetPassword = catchAsync(async(req, res, next) => {
     findUser.resetDate = Date.now() + 10 * 60 * 1000
     await findUser.save()
 
-    const link = `https://commerce-x-livid.vercel.app/reset-password/${resetToken}`
+    const link = `https://commerce-x-seven.vercel.app/reset-password/${resetToken}`
 
-await sendEmail(
+sendEmail(
   email,
   "Reset Your Password",
   "",

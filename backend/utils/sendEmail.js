@@ -11,20 +11,22 @@ const transporter = nodemailer.createTransport({
 });
 
 
-async function sendEmail(to, subject, text, html){
-try {
-    const info = await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to, 
-    subject,
-    text, 
-    html 
-});
+function sendEmail(to, subject, text, html){
 
-    console.log("Message sent: %s", info.messageId);
-} catch (err) {
-    console.error("Error while sending mail:", err);
-}
+    transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to,
+        subject,
+        text,
+        html
+    })
+    .then(info => {
+        console.log("Message sent:", info.messageId);
+    })
+    .catch(err => {
+        console.error("Error while sending mail:", err);
+    });
+
 }
 
 module.exports = sendEmail
