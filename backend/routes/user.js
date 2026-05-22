@@ -1,5 +1,5 @@
 const express = require('express')
-const { getAllUsers, getUsersById, addUser, updateUser, deleteUser } = require('../controllers/User')
+const { getAllUsers, getUsersById, addUser, updateUser, deleteUser } = require('../controllers/user')
 const authMiddleware = require('../middlewares/auth')
 const restrictTo = require('../middlewares/restrictTo')
 
