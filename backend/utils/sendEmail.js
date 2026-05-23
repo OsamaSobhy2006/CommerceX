@@ -1,32 +1,32 @@
 const nodemailer = require("nodemailer");
 
+
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, 
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+
+  secure: false,
+
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 10000,
 });
 
 
 function sendEmail(to, subject, text, html){
 
     transporter.sendMail({
-        from: process.env.EMAIL_USER,
+        from: process.env.SMTP_USER,
         to,
         subject,
         text,
         html
     })
-    .then(info => {
-        console.log("Message sent:", info.messageId);
-    })
-    .catch(err => {
-        console.error("Error while sending mail:", err);
-    });
-
 }
 
 module.exports = sendEmail
