@@ -17,6 +17,8 @@ exports.signUp = catchAsync(async (req, res, next) => {
     const findUser = await User.findOne({email})
     
     if(findUser) return next(new AppError("Email Already Exists", 400))
+      
+      console.log(process.env.RESEND_API_KEY)
 
 
     const hashPassword = await bcrypt.hash(password, +process.env.SALT_ROUNDS)
