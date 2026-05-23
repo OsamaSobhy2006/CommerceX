@@ -1,5 +1,7 @@
 const nodemailer = require("nodemailer");
 
+console.log("SMTP USER:", process.env.SMTP_USER);
+console.log("SMTP PASS:", process.env.SMTP_PASS);
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -11,22 +13,27 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 10000,
 });
 
+function sendEmail(to, subject, text, html) {
 
-function sendEmail(to, subject, text, html){
+  console.log("sendEmail function started");
 
-    transporter.sendMail({
-        from: process.env.SMTP_USER,
-        to,
-        subject,
-        text,
-        html
-    })
+  return transporter.sendMail({
+      from: process.env.SMTP_USER,
+      to,
+      subject,
+      text,
+      html,
+  })
+  .then(info => {
+      console.log("EMAIL SENT");
+      console.log(info);
+  })
+  .catch(err => {
+      console.log("EMAIL ERROR");
+      console.log(err);
+  });
 }
 
-module.exports = sendEmail
+module.exports = sendEmail;
