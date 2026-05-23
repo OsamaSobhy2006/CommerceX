@@ -19,6 +19,7 @@ const adminRouter = require('./routes/admin.js')
 app.use('/uploads', express.static('uploads'))
 
 app.set('query parser', 'extended');
+app.set("trust proxy", 1)
 
 app.use('/payment/webhook', express.raw({ type: 'application/json' }))
 
