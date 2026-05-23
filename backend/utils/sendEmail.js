@@ -1,7 +1,5 @@
 const nodemailer = require("nodemailer");
 
-console.log("SMTP USER:", process.env.SMTP_USER);
-console.log("SMTP PASS:", process.env.SMTP_PASS);
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -17,7 +15,6 @@ const transporter = nodemailer.createTransport({
 
 function sendEmail(to, subject, text, html) {
 
-  console.log("sendEmail function started");
 
   return transporter.sendMail({
       from: process.env.SMTP_USER,
