@@ -18,8 +18,6 @@ exports.signUp = catchAsync(async (req, res, next) => {
     
     if(findUser) return next(new AppError("Email Already Exists", 400))
       
-      console.log(process.env.RESEND_API_KEY)
-
 
     const hashPassword = await bcrypt.hash(password, +process.env.SALT_ROUNDS)
 
@@ -31,12 +29,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
     const user = await User.create({...req.body, password:hashPassword, confirmOTP, otpDate })
 
-  res.status(200).json({
-        success: true,
-        message: "OTP sent successfully"
-    })
-
-    sendEmail(
+  await sendEmail(
   email,
   "Confirm Your Email",
   "",
@@ -89,6 +82,11 @@ exports.signUp = catchAsync(async (req, res, next) => {
   </div>
   `
 )
+
+  return res.status(200).json({
+        success: true,
+        message: "OTP sent successfully"
+    })
 
 
     
