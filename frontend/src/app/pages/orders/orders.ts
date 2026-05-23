@@ -38,8 +38,6 @@ export class OrdersPage implements OnInit {
 
       next: (res: any) => {
 
-        console.log(res);
-
         this.orders.set(res.data.order);
 
       },

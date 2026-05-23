@@ -34,8 +34,6 @@ export class ManageOrders implements OnInit{
 
       next: (res: any) => {
 
-        console.log(res);
-
         this.orders.set(res.data.orders);
 
       },

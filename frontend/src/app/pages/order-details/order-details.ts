@@ -35,8 +35,6 @@ export class OrderDetails implements OnInit{
 
         next: (res: any) => {
 
-          console.log(res);
-
           this.order.set(res.data.order);
 
         },

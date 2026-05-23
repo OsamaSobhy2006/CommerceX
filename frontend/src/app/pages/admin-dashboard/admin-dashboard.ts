@@ -32,8 +32,6 @@ export class AdminDashboard implements OnInit{
 
       next: (res: any) => {
 
-        console.log(res);
-
         this.stats.set(res.data);
 
       },
