@@ -1,31 +1,34 @@
-const brevo = require('@getbrevo/brevo');
-
-const apiInstance = new brevo.ApiClient();
-
-apiInstance.authentications['api-key'].apiKey = process.env.BREVO_API_KEY;
-
-const transactionalEmailsApi = new brevo.TransactionalEmailsApi();
-
 async function sendEmail(to, subject, text, html) {
 
-  const sendSmtpEmail = new brevo.SendSmtpEmail();
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
 
-  sendSmtpEmail.subject = subject;
+    headers: {
+      "Content-Type": "application/json",
+      "api-key": process.env.BREVO_API_KEY,
+    },
 
-  sendSmtpEmail.htmlContent = html;
+    body: JSON.stringify({
+      sender: {
+        name: "CommerceX",
+        email: "osamasobhy2906@gmail.com",
+      },
 
-  sendSmtpEmail.sender = {
-    name: "CommerceX",
-    email: "osamasobhy2906@gmail.com"
-  };
+      to: [
+        {
+          email: to,
+        },
+      ],
 
-  sendSmtpEmail.to = [
-    {
-      email: to
-    }
-  ];
+      subject,
 
-  return transactionalEmailsApi.sendTransacEmail(sendSmtpEmail);
+      htmlContent: html,
+    }),
+  });
+
+  const data = await response.json();
+
+  return data;
 }
 
 module.exports = sendEmail;
