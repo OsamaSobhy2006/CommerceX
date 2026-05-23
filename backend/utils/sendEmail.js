@@ -1,17 +1,32 @@
-const { Resend } = require("resend");
+const brevo = require("@getbrevo/brevo");
 
+const apiInstance = new brevo.TransactionalEmailsApi();
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+apiInstance.setApiKey(
+  brevo.TransactionalEmailsApiApiKeys.apiKey,
+  process.env.BREVO_API_KEY
+);
 
 async function sendEmail(to, subject, text, html) {
 
+  const sendSmtpEmail = new brevo.SendSmtpEmail();
 
-  return resend.emails.send({
-    from: "onboarding@resend.dev",
-    to,
-    subject,
-    html,
-  });
+  sendSmtpEmail.subject = subject;
+
+  sendSmtpEmail.htmlContent = html;
+
+  sendSmtpEmail.sender = {
+    name: "CommerceX",
+    email: "osamasobhy2906@gmail.com",
+  };
+
+  sendSmtpEmail.to = [
+    {
+      email: to,
+    },
+  ];
+
+  return apiInstance.sendTransacEmail(sendSmtpEmail);
 }
 
 module.exports = sendEmail;
