@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class Admin {
-  apiLink = 'https://commercex-production.up.railway.app/admin'
+  apiLink = 'https://commerce-x-zabs.vercel.app/admin'
 
   constructor(private http: HttpClient){}
 

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 export class Payment {
 
-  apiUrl = 'https://commercex-production.up.railway.app/payment';
+  apiUrl = 'https://commerce-x-zabs.vercel.app/payment';
 
   constructor(private http: HttpClient) {}
 

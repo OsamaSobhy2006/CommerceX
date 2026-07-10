@@ -7,7 +7,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 })
 
 export class Cart {
-  apiUrl = 'https://commercex-production.up.railway.app/cart'
+  apiUrl = 'https://commerce-x-zabs.vercel.app/cart'
   cartCount = new BehaviorSubject<number>(0)
 
   constructor(private http: HttpClient){}
